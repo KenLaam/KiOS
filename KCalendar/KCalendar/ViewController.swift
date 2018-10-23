@@ -53,7 +53,16 @@ class ViewController: UIViewController {
         calendarView.register(UINib(nibName: CELL_ID, bundle: nil), forCellWithReuseIdentifier: CELL_ID)
         calendarView.visibleDates {
             self.updateMonthYearLabel(from: $0)
+            $0.indates.forEach({
+                debugPrint("In \($0.date.string(format: "MM dd"))")
+            })
+            $0.outdates.forEach({
+                debugPrint("Out \($0.date.string(format: "MM dd"))")
+            })
         }
+        calendarView.scrollToDate(Date())
+        calendarView.selectDates(["2018 10 23".date(format: FORMAT_FULL)])
+        
     }
     
     func updateMonthYearLabel(from visibleDates: DateSegmentInfo) {
@@ -68,7 +77,6 @@ class ViewController: UIViewController {
     @objc func onTapPrevMonth() {
         calendarView.scrollToSegment(SegmentDestination.previous)
     }
-
 }
 
 extension ViewController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
