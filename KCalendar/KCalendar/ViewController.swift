@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     }
     
     func updateMonthYearLabel(from visibleDates: DateSegmentInfo) {
-        lblMonthYear.text = visibleDates.monthDates.first!.date.string(format: self.FORMAT_MONTH_YEAR)
+        lblMonthYear.text = visibleDates.monthDates.first!.date.string(format: FORMAT_MONTH_YEAR)
     }
     
     @objc func onTapNextMonth() {
@@ -133,4 +133,3 @@ extension ViewController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSo
         cell.viewBackground.isHidden = !(cellState.isSelected && cellState.dateBelongsTo == .thisMonth)
     }
 }
-
