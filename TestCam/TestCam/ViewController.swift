@@ -23,12 +23,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         do {
-            camera = try Camera(sessionPreset:.vga640x480)
+            camera = try Camera(sessionPreset: AVCaptureSession.Preset.hd1920x1080)
             camera.runBenchmark = true
 //            lookUpFilter.intensity = 1
 //            lookUpFilter.lookupImage = PictureInput(imageName: "lookup_amaro")
+            lookUpFilter.lookupImage = PictureInput(imageName: "lookup_none")
             camera --> lookUpFilter --> renderView
-//            camera --> renderView
             camera.startCapture()
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
